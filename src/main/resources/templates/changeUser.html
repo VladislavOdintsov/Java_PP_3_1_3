@@ -7,20 +7,20 @@
 <body>
 
 <form th:method="PATCH" th:action="@{/admin/changeUser/{id}(id=${user.getId()})}" th:object="${user}">
-    <label for="username">Enter name:</label>
+    <label for="username">Enter username:</label>
     <input type="text" th:field="*{username}" id="username">
     <br/>
 
-    <label for="password">Enter last name:</label>
+    <label for="password">Enter password:</label>
     <input type="text" th:field="*{password}" id="password">
     <br/>
 
-    <label for="email">Enter age:</label>
+    <label for="email">Enter email:</label>
     <input type="text" th:field="*{email}" id="email">
     <br/>
 
     <input type="submit" value="Обновить пользователя"/>
 </form>
-
+<a href="/logout">Logout</a>
 </body>
 </html>

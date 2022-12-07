@@ -25,8 +25,8 @@ public class Init {
 
     @PostConstruct
     public void startDataBase() {
-        Role roleAdmin = new Role("ADMIN");
-        Role roleUser = new Role("USER");
+        Role roleAdmin = new Role("ROLE_ADMIN");
+        Role roleUser = new Role("ROLE_USER");
         Set<Role> adminSet = new HashSet<>();
         Set<Role> userSet = new HashSet<>();
 

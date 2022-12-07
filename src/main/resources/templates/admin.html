@@ -11,10 +11,11 @@
 <table class="User">
   <thead>
   <tr>
-    <th scope="col">Номер</th>
+    <th scope="col">ID</th>
     <th scope="col">Имя</th>
     <th scope="col">Пароль</th>
     <th scope="col">Email</th>
+    <th scope="col">Права</th>
     <th scope="col">Действия</th>
   </tr>
   </thead>
@@ -24,8 +25,8 @@
     <td th:text="${user.getUsername()}"/>
     <td th:text="${user.getPassword()}"/>
     <td th:text="${user.getEmail()}"/>
+    <td th:each="role : ${user.getRoles()}" th:text="${role.getName()}"></td>
     <td>
-      <!--            <a th:href="@{/changeUser/{id}(id=${user.getId()})}">Изменить</a>-->
       <form th:method="GET" th:action="@{/admin/changeUser/{id}(id=${user.getId()})}">
         <input type="submit" value="Изменить">
       </form>
@@ -40,6 +41,7 @@
 <form th:method="GET" th:action="@{/admin/addUser}" >
   <input type="submit" value="Добавить пользователя">
 </form>
+<a href="/logout">Logout</a>
 
 </body>
 </html>

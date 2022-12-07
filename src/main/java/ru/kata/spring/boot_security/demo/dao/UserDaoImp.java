@@ -1,11 +1,11 @@
 package ru.kata.spring.boot_security.demo.dao;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import ru.kata.spring.boot_security.demo.models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Transient;
 import java.util.List;
 
 @Repository
@@ -29,7 +29,7 @@ public class UserDaoImp implements UserDao{
     public void changeUser(long id, User updatedUser) {
         User userToUpdate = getUserById(id);
         userToUpdate.setUsername(updatedUser.getUsername());
-        userToUpdate.setPassword(updatedUser.getPassword());
+        userToUpdate.setPassword(new BCryptPasswordEncoder().encode(updatedUser.getPassword()));
         userToUpdate.setEmail(updatedUser.getEmail());
         entityManager.merge(userToUpdate);
     }
